@@ -453,6 +453,14 @@ bg. Blockquote!
 
   Scenario: Some cukes
     Given I have 3 cukes in my belly
+
+  Scenario Outline: Different numbers of cukes
+    Given I have <n> cukes in my belly
+    
+    Examples: not so many
+      | n |
+      | 1 |
+      | 3 |
 </script>
 
   <input id="cockpitInput" type="text"/>
