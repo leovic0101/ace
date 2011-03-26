@@ -14,6 +14,7 @@
       <td align="right">
         <label for="doc">Document:</label>
         <select id="doc" size="1">
+          <option value="gherkin">Gherkin Document</option>
           <option value="js">JavaScript Document</option>
           <option value="html">HTML Document</option>
           <option value="css">CSS Document</option>
@@ -27,7 +28,6 @@
           <option value="c_cpp">C++ Document</option>
           <option value="svg">SVG Document</option>
           <option value="textile">Textile Document</option>
-          <option value="gherkin">Gherkin Document</option>
           <option value="plain">Text Document</option>
         </select>
       </td>
@@ -449,36 +449,10 @@ bg. Blockquote!
     This is a two-list blockquote..!
 
 </script>
-<script type="text/editor" id="gherkintext">h1. Gherkin document
+<script type="text/editor" id="gherkintext">Feature: Gherkin document
 
-h2. Heading Two
-
-h3. A two-line
-    header
-
-h2. Another two-line
-header
-
-Paragraph:
-one, two,
-thee lines!
-
-p(classone two three). This is a paragraph with classes
-
-p(#id). (one with an id)
-
-p(one two three#my_id). ..classes + id
-
-* Unordered list
-** sublist
-* back again!
-** sublist again..
-
-# ordered
-
-bg. Blockquote!
-    This is a two-list blockquote..!
-
+  Scenario: Some cukes
+    Given I have 3 cukes in my belly
 </script>
 
   <input id="cockpitInput" type="text"/>
