@@ -61,6 +61,7 @@ exports.launch = function(env) {
     var PerlMode = require("ace/mode/perl").Mode;
     var SvgMode = require("ace/mode/svg").Mode;
     var TextileMode = require("ace/mode/textile").Mode;
+    var GherkinMode = require("ace/mode/gherkin").Mode;
     var TextMode = require("ace/mode/text").Mode;
     var UndoManager = require("ace/undomanager").UndoManager;
 
@@ -144,12 +145,17 @@ exports.launch = function(env) {
     docs.textile.setMode(new TextileMode());
     docs.textile.setUndoManager(new UndoManager());
 
+    docs.gherkin = new EditSession(document.getElementById("gherkintext").innerHTML);
+    docs.gherkin.setMode(new GherkinMode());
+    docs.gherkin.setUndoManager(new UndoManager());
+
     var container = document.getElementById("editor");
     env.editor = new Editor(new Renderer(container, theme));
 
     var modes = {
         text: new TextMode(),
         textile: new TextileMode(),
+        gherkin: new GherkinMode(),
         svg: new SvgMode(),
         xml: new XmlMode(),
         html: new HtmlMode(),
@@ -218,6 +224,9 @@ exports.launch = function(env) {
         }
         else if (mode instanceof TextileMode) {
             modeEl.value = "textile";
+        }
+        else if (mode instanceof GherkinMode) {
+            modeEl.value = "gherkin";
         }
         else {
             modeEl.value = "text";
