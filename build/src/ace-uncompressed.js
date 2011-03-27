@@ -144,7 +144,7 @@ var lookup = function(moduleName) {
     MIT License. http://github.com/280north/narwhal/blob/master/README.md
 */
 
-define('pilot/fixoldbrowsers', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/fixoldbrowsers', function(require, exports, module) {
 
 /**
  * Brings an environment as close to ECMAScript 5 compliance
@@ -933,7 +933,7 @@ exports.globalsLoaded = true;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/index', ['require', 'exports', 'module' , 'pilot/fixoldbrowsers', 'pilot/types/basic', 'pilot/types/command', 'pilot/types/settings', 'pilot/commands/settings', 'pilot/commands/basic', 'pilot/settings/canon', 'pilot/canon'], function(require, exports, module) {
+define('pilot/index', function(require, exports, module) {
 
 exports.startup = function(data, reason) {
     require('pilot/fixoldbrowsers');
@@ -999,7 +999,7 @@ exports.shutdown = function(data, reason) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/types/basic', ['require', 'exports', 'module' , 'pilot/types'], function(require, exports, module) {
+define('pilot/types/basic', function(require, exports, module) {
 
 var types = require("pilot/types");
 var Type = types.Type;
@@ -1330,7 +1330,7 @@ exports.shutdown = function() {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/types', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/types', function(require, exports, module) {
 
 /**
  * Some types can detect validity, that is to say they can distinguish between
@@ -1613,7 +1613,7 @@ exports.getType = function(typeSpec) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/types/command', ['require', 'exports', 'module' , 'pilot/canon', 'pilot/types/basic', 'pilot/types'], function(require, exports, module) {
+define('pilot/types/command', function(require, exports, module) {
 
 var canon = require("pilot/canon");
 var SelectionType = require("pilot/types/basic").SelectionType;
@@ -1687,7 +1687,7 @@ exports.shutdown = function() {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/canon', ['require', 'exports', 'module' , 'pilot/console', 'pilot/stacktrace', 'pilot/oop', 'pilot/useragent', 'pilot/keys', 'pilot/event_emitter', 'pilot/typecheck', 'pilot/catalog', 'pilot/types', 'pilot/lang'], function(require, exports, module) {
+define('pilot/canon', function(require, exports, module) {
 
 var console = require('pilot/console');
 var Trace = require('pilot/stacktrace').Trace;
@@ -2326,7 +2326,7 @@ exports.Request = Request;
  * the terms of any one of the MPL, the GPL or the LGPL.
  *
  * ***** END LICENSE BLOCK ***** */
-define('pilot/console', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/console', function(require, exports, module) {
     
 /**
  * This object represents a "safe console" object that forwards debugging
@@ -2364,7 +2364,7 @@ if (typeof(window) === 'undefined') {
 }
 
 });
-define('pilot/stacktrace', ['require', 'exports', 'module' , 'pilot/useragent', 'pilot/console'], function(require, exports, module) {
+define('pilot/stacktrace', function(require, exports, module) {
     
 var ua = require("pilot/useragent");
 var console = require('pilot/console');
@@ -2733,7 +2733,7 @@ exports.Trace.prototype.log = function(lines) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/useragent', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/useragent', function(require, exports, module) {
 
 var os = (navigator.platform.match(/mac|win|linux/i) || ["other"])[0].toLowerCase();
 var ua = navigator.userAgent;
@@ -2830,7 +2830,7 @@ exports.getOS = function() {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/oop', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/oop', function(require, exports, module) {
 
 exports.inherits = (function() {
     var tempCtor = function() {};
@@ -2886,7 +2886,7 @@ For more information about SproutCore, visit http://www.sproutcore.com
 
 // Most of the following code is taken from SproutCore with a few changes.
 
-define('pilot/keys', ['require', 'exports', 'module' , 'pilot/oop'], function(require, exports, module) {
+define('pilot/keys', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 
@@ -3010,7 +3010,7 @@ exports.keyCodeToString = function(keyCode) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/event_emitter', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/event_emitter', function(require, exports, module) {
 
 var EventEmitter = {};
 
@@ -3100,7 +3100,7 @@ exports.EventEmitter = EventEmitter;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/typecheck', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/typecheck', function(require, exports, module) {
 
 var objectToString = Object.prototype.toString;
 
@@ -3179,7 +3179,7 @@ exports.isFunction = function(it) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/catalog', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/catalog', function(require, exports, module) {
 
 
 var extensionSpecs = {};
@@ -3244,7 +3244,7 @@ exports.getExtensionSpecs = function() {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/lang', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/lang', function(require, exports, module) {
 
 exports.stringReverse = function(string) {
     return string.split("").reverse().join("");
@@ -3357,7 +3357,7 @@ exports.deferredCall = function(fcn) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/types/settings', ['require', 'exports', 'module' , 'pilot/types/basic', 'pilot/types', 'pilot/settings'], function(require, exports, module) {
+define('pilot/types/settings', function(require, exports, module) {
 
 var SelectionType = require('pilot/types/basic').SelectionType;
 var DeferredType = require('pilot/types/basic').DeferredType;
@@ -3499,7 +3499,7 @@ exports.shutdown = function(data, reason) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/settings', ['require', 'exports', 'module' , 'pilot/console', 'pilot/oop', 'pilot/types', 'pilot/event_emitter', 'pilot/catalog'], function(require, exports, module) {
+define('pilot/settings', function(require, exports, module) {
 
 /**
  * This plug-in manages settings.
@@ -3822,7 +3822,7 @@ exports.CookiePersister = CookiePersister;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/commands/settings', ['require', 'exports', 'module' , 'pilot/canon'], function(require, exports, module) {
+define('pilot/commands/settings', function(require, exports, module) {
 
 
 var setCommandSpec = {
@@ -3957,7 +3957,7 @@ exports.shutdown = function(data, reason) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/commands/basic', ['require', 'exports', 'module' , 'pilot/typecheck', 'pilot/canon'], function(require, exports, module) {
+define('pilot/commands/basic', function(require, exports, module) {
 
 
 var checks = require("pilot/typecheck");
@@ -4231,7 +4231,7 @@ exports.shutdown = function(data, reason) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/settings/canon', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/settings/canon', function(require, exports, module) {
 
 
 var historyLengthSetting = {
@@ -4288,7 +4288,7 @@ exports.shutdown = function(data, reason) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/plugin_manager', ['require', 'exports', 'module' , 'pilot/promise'], function(require, exports, module) {
+define('pilot/plugin_manager', function(require, exports, module) {
 
 var Promise = require("pilot/promise").Promise;
 
@@ -4447,7 +4447,7 @@ exports.catalog = new exports.PluginCatalog();
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/promise', ['require', 'exports', 'module' , 'pilot/console', 'pilot/stacktrace'], function(require, exports, module) {
+define('pilot/promise', function(require, exports, module) {
 
 var console = require("pilot/console");
 var Trace = require('pilot/stacktrace').Trace;
@@ -4710,7 +4710,7 @@ exports._recent = _recent;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/environment', ['require', 'exports', 'module' , 'pilot/settings'], function(require, exports, module) {
+define('pilot/environment', function(require, exports, module) {
 
 
 var settings = require("pilot/settings").settings;
@@ -4768,7 +4768,7 @@ exports.create = create;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/editor', ['require', 'exports', 'module' , 'pilot/fixoldbrowsers', 'pilot/oop', 'pilot/event', 'pilot/lang', 'pilot/useragent', 'ace/keyboard/textinput', 'ace/mouse_handler', 'ace/keyboard/keybinding', 'ace/edit_session', 'ace/search', 'ace/background_tokenizer', 'ace/range', 'pilot/event_emitter'], function(require, exports, module) {
+define('ace/editor', function(require, exports, module) {
 
 require("pilot/fixoldbrowsers");
 
@@ -5891,7 +5891,7 @@ exports.Editor = Editor;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/event', ['require', 'exports', 'module' , 'pilot/keys', 'pilot/useragent', 'pilot/dom'], function(require, exports, module) {
+define('pilot/event', function(require, exports, module) {
 
 var keys = require("pilot/keys");
 var useragent = require("pilot/useragent");
@@ -6199,7 +6199,7 @@ exports.addCommandKeyListener = function(el, callback) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('pilot/dom', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('pilot/dom', function(require, exports, module) {
 
 var XHTML_NS = "http://www.w3.org/1999/xhtml";
 
@@ -6488,7 +6488,7 @@ exports.setSelectionEnd = function(textarea, end) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/keyboard/textinput', ['require', 'exports', 'module' , 'pilot/event', 'pilot/useragent', 'pilot/dom'], function(require, exports, module) {
+define('ace/keyboard/textinput', function(require, exports, module) {
 
 var event = require("pilot/event");
 var useragent = require("pilot/useragent");
@@ -6735,7 +6735,7 @@ exports.TextInput = TextInput;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mouse_handler', ['require', 'exports', 'module' , 'pilot/event', 'pilot/dom'], function(require, exports, module) {
+define('ace/mouse_handler', function(require, exports, module) {
 
 var event = require("pilot/event");
 var dom = require("pilot/dom");
@@ -7023,7 +7023,7 @@ exports.MouseHandler = MouseHandler;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/keyboard/keybinding', ['require', 'exports', 'module' , 'pilot/useragent', 'pilot/keys', 'pilot/event', 'pilot/settings', 'pilot/canon', 'ace/commands/default_commands'], function(require, exports, module) {
+define('ace/keyboard/keybinding', function(require, exports, module) {
 
 var useragent = require("pilot/useragent");
 var keyUtil  = require("pilot/keys");
@@ -7137,7 +7137,7 @@ exports.KeyBinding = KeyBinding;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/commands/default_commands', ['require', 'exports', 'module' , 'pilot/lang', 'pilot/canon'], function(require, exports, module) {
+define('ace/commands/default_commands', function(require, exports, module) {
 
 var lang = require("pilot/lang");
 var canon = require("pilot/canon");
@@ -7450,7 +7450,7 @@ canon.addCommand({
 });
 canon.addCommand({
     name: "centerselection",
-    bindKey: bindKey("Ctrl-L", "Ctrl-L"),
+    bindKey: bindKey(null, "Ctrl-L"),
     exec: function(env, args, request) { env.editor.centerSelection(); }
 });
 canon.addCommand({
@@ -7503,7 +7503,7 @@ canon.addCommand({
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/edit_session', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/lang', 'pilot/event_emitter', 'ace/selection', 'ace/mode/text', 'ace/range', 'ace/document'], function(require, exports, module) {
+define('ace/edit_session', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var lang = require("pilot/lang");
@@ -7814,16 +7814,16 @@ var EditSession = function(text, mode) {
     this.setUseWorker = function(useWorker) {
         if (this.$useWorker == useWorker)
             return;
-            
+
         if (useWorker && !this.$worker && window.Worker)
             this.$worker = mode.createWorker(this);
-            
+
         if (!useWorker && this.$worker) {
             this.$worker.terminate();
             this.$worker = null;
         }
     };
-    
+
     this.getUseWorker = function() {
         return this.$useWorker;
     };
@@ -7880,17 +7880,13 @@ var EditSession = function(text, mode) {
             var lines = this.doc.getAllLines();
             var longestLine = 0;
             var longestScreenLine = 0;
-            var tabSize = this.getTabSize();
 
             for ( var i = 0; i < lines.length; i++) {
-                var len = lines[i].length;
+                var line = lines[i],
+                    len = line.length,
+                    screenLen = this.$getStringScreenWidth(line);
                 longestLine = Math.max(longestLine, len);
-
-                lines[i].replace(/\t/g, function(m) {
-                    len += tabSize-1;
-                    return m;
-                });
-                longestScreenLine = Math.max(longestScreenLine, len);
+                longestScreenLine = Math.max(longestScreenLine, screenLen);
             }
             this.width = longestLine;
 
@@ -7907,14 +7903,6 @@ var EditSession = function(text, mode) {
      */
     this.getLine = function(row) {
         return this.doc.getLine(row);
-    };
-
-    /**
-     * Get a line as it is displayed on screen. Tabs are replaced by spaces.
-     */
-    this.getDisplayLine = function(row) {
-        var tab = new Array(this.getTabSize()+1).join(" ");
-        return this.doc.getLine(row).replace(/\t/g, tab);
     };
 
     this.getLines = function(firstRow, lastRow) {
@@ -8067,7 +8055,7 @@ var EditSession = function(text, mode) {
 
 
         var actions = [{}];
-        
+
         // collapse insert and remove operations
         for (var i=0; i<deltas.length; i++) {
             var delta = deltas[i];
@@ -8081,7 +8069,7 @@ var EditSession = function(text, mode) {
                 })
             }
             else {
-                if (isInsert)    
+                if (isInsert)
                     action.end = delta.range.end;
                 else
                     action.start = delta.range.start;
@@ -8091,12 +8079,12 @@ var EditSession = function(text, mode) {
         // update selection based on last operation
         this.selection.clearSelection();
         var action = actions[actions.length-1];
-        if (action.isInsert) 
+        if (action.isInsert)
             this.selection.setSelectionRange(Range.fromPoints(action.start, action.end));
-        else 
+        else
             this.selection.moveCursorToPosition(action.end);
     },
-    
+
     this.replace = function(range, text) {
         return this.doc.replace(range, text);
     };
@@ -8365,9 +8353,9 @@ var EditSession = function(text, mode) {
             // and multipleWidth characters.
             var len = displayed.length;
             displayed.join("").
-                // Get all the tabs.
-                replace(/4/g, function(m) {
-                    len -= tabSize - 1;
+                // Get all the tabs spaces.
+                replace(/5/g, function(m) {
+                    len -= 1;
                 }).
                 // Get all the multipleWidth characters.
                 replace(/2/g, function(m) {
@@ -8413,29 +8401,24 @@ var EditSession = function(text, mode) {
 
     this.$getDisplayTokens = function(str) {
         var arr = [];
-        var tabSize = this.getTabSize();
+        var tabSize;
 
         for (var i = 0; i < str.length; i++) {
-			var c = str.charCodeAt(i);
-			// Tab
-			if (c == 9) {
-			    arr.push(TAB);
-			    for (var n = 1; n < tabSize; n++) {
-			        arr.push(TAB_SPACE);
-			    }
-			}
+            var c = str.charCodeAt(i);
+            // Tab
+            if (c == 9) {
+                tabSize = this.getScreenTabSize(arr.length);
+                arr.push(TAB);
+                for (var n = 1; n < tabSize; n++) {
+                    arr.push(TAB_SPACE);
+                }
+            }
 			// Space
 			else if(c == 32) {
 			    arr.push(SPACE);
 			}
-    		// CJK characters
-            else if (
-                c >= 0x3040 && c <= 0x309F || // Hiragana
-                c >= 0x30A0 && c <= 0x30FF || // Katakana
-                c >= 0x4E00 && c <= 0x9FFF || // Single CJK ideographs
-                c >= 0xF900 && c <= 0xFAFF ||
-                c >= 0x3400 && c <= 0x4DBF
-            ) {
+    		// full width characters
+            else if (isFullWidth(c)) {
                 arr.push(CHAR, CHAR_EXT);
             } else {
                 arr.push(CHAR);
@@ -8454,21 +8437,15 @@ var EditSession = function(text, mode) {
     this.$getStringScreenWidth = function(str) {
         var screenColumn = 0;
         var tabSize = this.getTabSize();
-		
-		for (var i=0; i<str.length; i++) {
-			var c = str.charCodeAt(i);
-			// tab
-			if (c == 9) {
-				screenColumn += tabSize;
-			}
-    		// CJK characters
-            else if (
-                c >= 0x3040 && c <= 0x309F || // Hiragana
-                c >= 0x30A0 && c <= 0x30FF || // Katakana
-                c >= 0x4E00 && c <= 0x9FFF || // Single CJK ideographs
-                c >= 0xF900 && c <= 0xFAFF ||
-                c >= 0x3400 && c <= 0x4DBF
-            ) {
+
+        for (var i=0; i<str.length; i++) {
+            var c = str.charCodeAt(i);
+            // tab
+            if (c == 9) {
+                screenColumn += this.getScreenTabSize(screenColumn);
+            }
+    		// full width characters
+            else if (isFullWidth(c)) {
             	screenColumn += 2;
 			} else {
 				screenColumn += 1;
@@ -8572,6 +8549,13 @@ var EditSession = function(text, mode) {
         return this.screenToDocumentPosition(screenRow, screenColumn).column;
     };
 
+    /**
+     * Returns the width of a tab character at screenColumn.
+     */
+    this.getScreenTabSize = function(screenColumn) {
+        return this.$tabSize - screenColumn % this.$tabSize;
+    };
+
     this.screenToDocumentPosition = function(row, column) {
         var line;
         var docRow;
@@ -8586,21 +8570,22 @@ var EditSession = function(text, mode) {
         } else {
             var wrapData = this.$wrapData;
 
-			var docRow = 0;
-			while (docRow < linesCount && row >= wrapData[docRow].length + 1) {
-				row -= wrapData[docRow].length + 1;
-				docRow ++;
-			}
+            var docRow = 0;
+            while (docRow < linesCount && row >= wrapData[docRow].length + 1) {
+                row -= wrapData[docRow].length + 1;
+                docRow ++;
+            }
 
             if (docRow >= linesCount) {
                 docRow = linesCount-1
-				row = wrapData[docRow].length;
+                row = wrapData[docRow].length;
             }
             docColumn = wrapData[docRow][row - 1] || 0;
             line = this.getLine(docRow).substring(docColumn);
         }
 
-        var tabSize = this.getTabSize();
+        var tabSize,
+            screenColumn = 0;
         for(var i = 0; i < line.length; i++) {
             var c = line.charCodeAt(i);
 
@@ -8608,21 +8593,17 @@ var EditSession = function(text, mode) {
                 docColumn += 1;
                 // tab
                 if (c == 9) {
+                    tabSize = this.getScreenTabSize(screenColumn);
                     if (remaining >= tabSize) {
                         remaining -= tabSize;
+                        screenColumn += tabSize;
                     } else {
                         remaining = 0;
                         docColumn -= 1;
                     }
                 }
-                // CJK characters
-                else if (
-                    c >= 0x3040 && c <= 0x309F || // Hiragana
-                    c >= 0x30A0 && c <= 0x30FF || // Katakana
-                    c >= 0x4E00 && c <= 0x9FFF || // Single CJK ideographs
-                    c >= 0xF900 && c <= 0xFAFF ||
-                    c >= 0x3400 && c <= 0x4DBF
-                ) {
+                // full width characters
+                else if (isFullWidth(c)) {
                     if (remaining >= 2) {
                         remaining -= 2;
                     } else {
@@ -8630,6 +8611,7 @@ var EditSession = function(text, mode) {
                         docColumn -= 1;
                     }
                 } else {
+                    screenColumn += 1;
                     remaining -= 1;
                 }
             } else {
@@ -8640,7 +8622,7 @@ var EditSession = function(text, mode) {
         // Clamp docColumn.
         if (this.$useWrapMode) {
             column = wrapData[docRow][row]
-			if (docColumn >= column) {
+            if (docColumn >= column) {
                 // We remove one character at the end such that the docColumn
                 // position returned is not associated to the next row on the
                 // screen.
@@ -8758,6 +8740,41 @@ var EditSession = function(text, mode) {
         }
         return screenRows;
     }
+    
+    function isFullWidth(c) {
+        return c >= 0x1100 && c <= 0x115F ||
+               c >= 0x11A3 && c <= 0x11A7 ||
+               c >= 0x11FA && c <= 0x11FF ||
+               c >= 0x2329 && c <= 0x232A ||
+               c >= 0x2E80 && c <= 0x2E99 ||
+               c >= 0x2E9B && c <= 0x2EF3 ||
+               c >= 0x2F00 && c <= 0x2FD5 ||
+               c >= 0x2FF0 && c <= 0x2FFB ||
+               c >= 0x3000 && c <= 0x303E ||
+               c >= 0x3041 && c <= 0x3096 ||
+               c >= 0x3099 && c <= 0x30FF ||
+               c >= 0x3105 && c <= 0x312D ||
+               c >= 0x3131 && c <= 0x318E ||
+               c >= 0x3190 && c <= 0x31BA ||
+               c >= 0x31C0 && c <= 0x31E3 ||
+               c >= 0x31F0 && c <= 0x321E ||
+               c >= 0x3220 && c <= 0x3247 ||
+               c >= 0x3250 && c <= 0x32FE ||
+               c >= 0x3300 && c <= 0x4DBF ||
+               c >= 0x4E00 && c <= 0xA48C ||
+               c >= 0xA490 && c <= 0xA4C6 ||
+               c >= 0xA960 && c <= 0xA97C ||
+               c >= 0xAC00 && c <= 0xD7A3 ||
+               c >= 0xD7B0 && c <= 0xD7C6 ||
+               c >= 0xD7CB && c <= 0xD7FB ||
+               c >= 0xF900 && c <= 0xFAFF ||
+               c >= 0xFE10 && c <= 0xFE19 ||
+               c >= 0xFE30 && c <= 0xFE52 ||
+               c >= 0xFE54 && c <= 0xFE66 ||
+               c >= 0xFE68 && c <= 0xFE6B ||
+               c >= 0xFF01 && c <= 0xFF60 ||
+               c >= 0xFFE0 && c <= 0xFFE6;
+    }
 
 }).call(EditSession.prototype);
 
@@ -8801,7 +8818,7 @@ exports.EditSession = EditSession;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/selection', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/lang', 'pilot/event_emitter', 'ace/range'], function(require, exports, module) {
+define('ace/selection', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var lang = require("pilot/lang");
@@ -8815,7 +8832,7 @@ var Selection = function(session) {
     this.clearSelection();
     this.selectionLead = this.doc.createAnchor(0, 0);
     this.selectionAnchor = this.doc.createAnchor(0, 0);
-    
+
     var _self = this;
     this.selectionLead.on("change", function(e) {
         _self._dispatchEvent("changeCursor");
@@ -8824,7 +8841,7 @@ var Selection = function(session) {
         if (e.old.row == e.value.row)
             _self.$updateDesiredColumn();
     });
-    
+
     this.selectionAnchor.on("change", function() {
         if (!_self.$isEmpty)
             _self._dispatchEvent("changeSelection");
@@ -9147,19 +9164,14 @@ var Selection = function(session) {
     };
 
     this.moveCursorBy = function(rows, chars) {
-        if (this.session.getUseWrapMode()) {
-            var screenPos = this.session.documentToScreenPosition(
-                this.selectionLead.row, 
-                this.selectionLead.column
-            );
-            var screenCol = (chars == 0 && this.$desiredColumn) || screenPos.column;
-            var docPos = this.session.screenToDocumentPosition(screenPos.row + rows, screenCol);
-            
-            this.moveCursorTo(docPos.row, docPos.column + chars, chars == 0);
-        } else {
-            var docColumn = (chars == 0 && this.$desiredColumn) || this.selectionLead.column;
-            this.moveCursorTo(this.selectionLead.row + rows, docColumn + chars, chars == 0);
-        }
+        var screenPos = this.session.documentToScreenPosition(
+            this.selectionLead.row,
+            this.selectionLead.column
+        );
+        var screenCol = (chars == 0 && this.$desiredColumn) || screenPos.column;
+        var docPos = this.session.screenToDocumentPosition(screenPos.row + rows, screenCol);
+
+        this.moveCursorTo(docPos.row, docPos.column + chars, chars == 0);
     };
 
     this.moveCursorToPosition = function(position) {
@@ -9173,11 +9185,9 @@ var Selection = function(session) {
     };
 
     this.moveCursorToScreen = function(row, column, preventUpdateDesiredColumn) {
-        if (this.session.getUseWrapMode()) {
-            var pos = this.session.screenToDocumentPosition(row, column);
-            row = pos.row;
-            column = pos.column;
-        }
+        var pos = this.session.screenToDocumentPosition(row, column);
+        row = pos.row;
+        column = pos.column;
         this.moveCursorTo(row, column, preventUpdateDesiredColumn);
     };
 
@@ -9222,7 +9232,7 @@ exports.Selection = Selection;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/range', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/range', function(require, exports, module) {
 
 var Range = function(startRow, startColumn, endRow, endColumn) {
     this.start = {
@@ -9391,7 +9401,7 @@ exports.Range = Range;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/text', ['require', 'exports', 'module' , 'ace/tokenizer', 'ace/mode/text_highlight_rules'], function(require, exports, module) {
+define('ace/mode/text', function(require, exports, module) {
 
 var Tokenizer = require("ace/tokenizer").Tokenizer;
 var TextHighlightRules = require("ace/mode/text_highlight_rules").TextHighlightRules;
@@ -9536,7 +9546,7 @@ exports.Mode = Mode;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/tokenizer', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/tokenizer', function(require, exports, module) {
 
 var Tokenizer = function(rules) {
     this.rules = rules;
@@ -9666,7 +9676,7 @@ exports.Tokenizer = Tokenizer;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/text_highlight_rules', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/mode/text_highlight_rules', function(require, exports, module) {
 
 var TextHighlightRules = function() {
 
@@ -9746,7 +9756,7 @@ exports.TextHighlightRules = TextHighlightRules;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/document', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/event_emitter', 'ace/range', 'ace/anchor'], function(require, exports, module) {
+define('ace/document', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var EventEmitter = require("pilot/event_emitter").EventEmitter;
@@ -10147,7 +10157,7 @@ exports.Document = Document;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/anchor', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/event_emitter'], function(require, exports, module) {
+define('ace/anchor', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var EventEmitter = require("pilot/event_emitter").EventEmitter;
@@ -10340,7 +10350,7 @@ var Anchor = exports.Anchor = function(doc, row, column) {
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/search', ['require', 'exports', 'module' , 'pilot/lang', 'pilot/oop', 'ace/range'], function(require, exports, module) {
+define('ace/search', function(require, exports, module) {
 
 var lang = require("pilot/lang");
 var oop = require("pilot/oop");
@@ -10672,7 +10682,7 @@ exports.Search = Search;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/background_tokenizer', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/event_emitter'], function(require, exports, module) {
+define('ace/background_tokenizer', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var EventEmitter = require("pilot/event_emitter").EventEmitter;
@@ -10846,7 +10856,7 @@ exports.BackgroundTokenizer = BackgroundTokenizer;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/undomanager', ['require', 'exports', 'module' ], function(require, exports, module) {
+define('ace/undomanager', function(require, exports, module) {
 
 var UndoManager = function() {
     this.reset();
@@ -10930,7 +10940,7 @@ exports.UndoManager = UndoManager;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/theme/textmate', ['require', 'exports', 'module' , 'pilot/dom'], function(require, exports, module) {
+define('ace/theme/textmate', function(require, exports, module) {
 
     var dom = require("pilot/dom");
 
@@ -11118,7 +11128,7 @@ define('ace/theme/textmate', ['require', 'exports', 'module' , 'pilot/dom'], fun
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/mode/matching_brace_outdent', ['require', 'exports', 'module' , 'ace/range'], function(require, exports, module) {
+define('ace/mode/matching_brace_outdent', function(require, exports, module) {
 
 var Range = require("ace/range").Range;
 
@@ -11201,7 +11211,7 @@ exports.MatchingBraceOutdent = MatchingBraceOutdent;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/virtual_renderer', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/dom', 'pilot/event', 'pilot/useragent', 'ace/layer/gutter', 'ace/layer/marker', 'ace/layer/text', 'ace/layer/cursor', 'ace/scrollbar', 'ace/renderloop', 'pilot/event_emitter', 'text/ace/css/editor.css'], function(require, exports, module) {
+define('ace/virtual_renderer', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var dom = require("pilot/dom");
@@ -11991,7 +12001,7 @@ exports.VirtualRenderer = VirtualRenderer;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/layer/gutter', ['require', 'exports', 'module' , 'pilot/dom'], function(require, exports, module) {
+define('ace/layer/gutter', function(require, exports, module) {
 
 var dom = require("pilot/dom");
 
@@ -12114,7 +12124,7 @@ exports.Gutter = Gutter;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/layer/marker', ['require', 'exports', 'module' , 'ace/range', 'pilot/dom'], function(require, exports, module) {
+define('ace/layer/marker', function(require, exports, module) {
 
 var Range = require("ace/range").Range;
 var dom = require("pilot/dom");
@@ -12295,7 +12305,7 @@ exports.Marker = Marker;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/layer/text', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/dom', 'pilot/lang', 'pilot/event_emitter'], function(require, exports, module) {
+define('ace/layer/text', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var dom = require("pilot/dom");
@@ -12417,18 +12427,21 @@ var Text = function(parentEl) {
         return true;
     };
 
+    this.$tabStrings = [];
     this.$computeTabString = function() {
         var tabSize = this.session.getTabSize();
-        if (this.showInvisibles) {
-            var halfTab = (tabSize) / 2;
-            this.$tabString = "<span class='ace_invisible'>"
-                + new Array(Math.floor(halfTab)).join("&#160;")
-                + this.TAB_CHAR
-                + new Array(Math.ceil(halfTab)+1).join("&#160;")
-                + "</span>";
-        } else {
-            this.$tabString = new Array(tabSize+1).join("&#160;");
+        var tabStr = this.$tabStrings = [0];
+        for (var i = 1; i < tabSize + 1; i++) {
+            if (this.showInvisibles) {
+                tabStr.push("<span class='ace_invisible'>"
+                    + this.TAB_CHAR
+                    + new Array(i).join("&#160;")
+                    + "</span>");
+            } else {
+                tabStr.push(new Array(i+1).join("&#160;"));
+            }
         }
+
     };
 
     this.updateLines = function(config, firstRow, lastRow) {
@@ -12534,35 +12547,37 @@ var Text = function(parentEl) {
     };
 
     this.$renderLine = function(stringBuilder, row, tokens) {
-        if (this.showInvisibles) {
-            var self = this;
-            var spaceRe = /( +)|([\v\f \u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000])/g;
-            var spaceReplace = function(space) {
-                if (space.charCodeAt(0) == 32)
-                    return new Array(space.length+1).join("&#160;");
-                else {
-                    var space = new Array(space.length+1).join(self.SPACE_CHAR);
-                    return "<span class='ace_invisible'>" + space + "</span>";
-                }
+        var _self = this,
+            characterWidth = this.config.characterWidth,
+            screenColumn = 0;
 
-            };
-        }
-        else {
-            var spaceRe = /[\v\f \u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000]/g;
-            var spaceReplace = "&#160;";
-        }
-
-        var _self = this;
-        var characterWidth = this.config.characterWidth;
         function addToken(token, value) {
             var output = value
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(spaceRe, spaceReplace)
-                .replace(/\t/g, _self.$tabString)
-                .replace(/[\u3040-\u309F]|[\u30A0-\u30FF]|[\u4E00-\u9FFF\uF900-\uFAFF\u3400-\u4DBF]/g, function(c) {
-                    return "<span class='ace_cjk' style='width:" + (characterWidth * 2) + "px'>" + c + "</span>"
-                });
+                    .replace(/\t|&|<|( +)|([\v\f \u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000])|[\u1100-\u115F]|[\u11A3-\u11A7]|[\u11FA-\u11FF]|[\u2329-\u232A]|[\u2E80-\u2E99]|[\u2E9B-\u2EF3]|[\u2F00-\u2FD5]|[\u2FF0-\u2FFB]|[\u3000-\u303E]|[\u3041-\u3096]|[\u3099-\u30FF]|[\u3105-\u312D]|[\u3131-\u318E]|[\u3190-\u31BA]|[\u31C0-\u31E3]|[\u31F0-\u321E]|[\u3220-\u3247]|[\u3250-\u32FE]|[\u3300-\u4DBF]|[\u4E00-\uA48C]|[\uA490-\uA4C6]|[\uA960-\uA97C]|[\uAC00-\uD7A3]|[\uD7B0-\uD7C6]|[\uD7CB-\uD7FB]|[\uF900-\uFAFF]|[\uFE10-\uFE19]|[\uFE30-\uFE52]|[\uFE54-\uFE66]|[\uFE68-\uFE6B]|[\uFF01-\uFF60]|[\uFFE0-\uFFE6]/g, function(c, a, b, tabIdx, idx4) {
+                        if (c.charCodeAt(0) == 32) {
+                            return new Array(c.length+1).join("&#160;");
+                        } else if (c == "\t") {
+                            var tabSize = _self.session.
+                                    getScreenTabSize(screenColumn + tabIdx);
+                            screenColumn += tabSize - 1;
+                            return _self.$tabStrings[tabSize];
+                        } else if (c == "&") {
+                            return "&amp";
+                        } else if (c == "<") {
+                            return "&lt;";
+                        } else if (c.match(/[\v\f \u00a0\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u200b\u2028\u2029\u3000]/)) {
+                            if (this.showInvisibles) {
+                                var space = new Array(c.length+1).join(self.SPACE_CHAR);
+                                return "<span class='ace_invisible'>" + space + "</span>";
+                            } else {
+                                return "&#160;"
+                            }
+                        } else {
+                            screenColumn += 1;
+                            return "<span class='ace_cjk' style='width:" + (characterWidth * 2) + "px'>" + c + "</span>"
+                        }
+                    });
+                screenColumn += value.length;
 
             if (!_self.$textToken[token.type]) {
                 var classes = "ace_" + token.type.replace(/\./g, " ace_");
@@ -12601,7 +12616,9 @@ var Text = function(parentEl) {
                         "<div style='height:",
                         this.config.lineHeight, "px",
                         "'>");
+
                     split ++;
+                    screenColumn = 0;
                     splitChars = splits[split] || Number.MAX_VALUE;
                 }
                 if (value.length != 0) {
@@ -12665,7 +12682,7 @@ exports.Text = Text;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/layer/cursor', ['require', 'exports', 'module' , 'pilot/dom'], function(require, exports, module) {
+define('ace/layer/cursor', function(require, exports, module) {
 
 var dom = require("pilot/dom");
 
@@ -12803,7 +12820,7 @@ exports.Cursor = Cursor;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/scrollbar', ['require', 'exports', 'module' , 'pilot/oop', 'pilot/dom', 'pilot/event', 'pilot/event_emitter'], function(require, exports, module) {
+define('ace/scrollbar', function(require, exports, module) {
 
 var oop = require("pilot/oop");
 var dom = require("pilot/dom");
@@ -12889,7 +12906,7 @@ exports.ScrollBar = ScrollBar;
  *
  * ***** END LICENSE BLOCK ***** */
 
-define('ace/renderloop', ['require', 'exports', 'module' , 'pilot/event'], function(require, exports, module) {
+define('ace/renderloop', function(require, exports, module) {
 
 var event = require("pilot/event");
 
@@ -12947,7 +12964,7 @@ var RenderLoop = function(onRender) {
 
 exports.RenderLoop = RenderLoop;
 });
-define("text/ace/css/editor.css", [], ".ace_editor {" +
+define("text/ace/css/editor.css", ".ace_editor {" +
   "    position: absolute;" +
   "    overflow: hidden;" +
   "" +
@@ -13107,7 +13124,7 @@ define("text/ace/css/editor.css", [], ".ace_editor {" +
   "}" +
   "");
 
-define("text/styles.css", [], "html {" +
+define("text/styles.css", "html {" +
   "    height: 100%;" +
   "    overflow: hidden;" +
   "}" +
