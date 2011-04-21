@@ -5303,7 +5303,7 @@ var Editor =function(renderer, session) {
     };
 
     this.setOverwrite = function(overwrite) {
-        this.session.setOverwrite();        
+        this.session.setOverwrite(overwrite);
     };
 
     this.getOverwrite = function() {
