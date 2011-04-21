@@ -14,6 +14,7 @@
       <td align="right">
         <label for="doc">Document:</label>
         <select id="doc" size="1">
+          <option value="gherkin">Gherkin Document</option>
           <option value="js">JavaScript Document</option>
           <option value="html">HTML Document</option>
           <option value="css">CSS Document</option>
@@ -100,6 +101,7 @@
           <option value="csharp">C-Sharp</option>
           <option value="svg">SVG</option>
           <option value="textile">Textile</option>
+          <option value="gherkin">Gherkin</option>
         </select>
       </td>
       <td align="right">
@@ -446,6 +448,25 @@ p(one two three#my_id). ..classes + id
 bg. Blockquote!
     This is a two-list blockquote..!
 
+</script>
+<script type="text/editor" id="gherkintext">Feature: Gherkin document
+
+  @fast @tasty
+  Scenario: Some cukes
+    Given I have 3 cukes in my belly
+    When I say:
+      """
+      I need more cukes
+      """
+
+  # This is a comment
+  Scenario Outline: Different numbers of cukes
+    Given I have <n> cukes in my belly
+    
+    Examples: not so many
+      | n |
+      | 1 |
+      | 3 |
 </script>
 
   <input id="cockpitInput" type="text"/>
