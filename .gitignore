@@ -20,3 +20,5 @@ support/node-htmlparser/
 support/node-o3-xml/
 support/requirejs/node_modules
 node_modules
+support/requirejs/
+/node_modules
