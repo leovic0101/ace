@@ -9,32 +9,73 @@
     <link rel="stylesheet" href="demo/styles.css" type="text/css" media="screen" charset="utf-8">
 </head>
 <body>
-    <table id="controls">
-      <tr>
-      <td align="right">
-        <label for="doc">Document:</label>
-        <select id="doc" size="1">
-          <option value="gherkin">Gherkin Document</option>
-          <option value="js">JavaScript Document</option>
-          <option value="plain">Text Document</option>
-          <option value="svg">SVG Document</option>
-          <option value="html">HTML Document</option>
-          <option value="css">CSS Document</option>
-          <option value="coffee">CoffeeScript Document</option>
-          <option value="python">Python Document</option>
-          <option value="ruby">Ruby Document</option>
-          <option value="perl">Perl Document</option>
-          <option value="php">PHP Document</option>
-          <option value="java">Java Document</option>
-          <option value="csharp">C# Document</option>
-          <option value="c_cpp">C++ Document</option>
-          <option value="svg">SVG Document</option>
-          <option value="ocaml">OCaml Document</option>
-          <option value="textile">Textile Document</option>
+  <img id="logo" src="demo/logo.png">
+  <table id="controls">
+    <tr>
+      <td>
+        <label for="split">Split</label>
+      </td><td>
+        <select id="split" size="1">
+          <option value="none">None</option>
+          <option value="below">Below</option>
+          <option value="beside">Beside</option>
         </select>
       </td>
-      <td align="right">
-        <label for="theme">Theme:</label>
+    </tr>
+    <tr>
+      <td>
+        <label for="doc">Document</label>
+      </td><td>
+        <select id="doc" size="1">
+          <option value="js">JavaScript</option>
+          <option value="plain">Plain Text</option>
+          <option value="svg">SVG</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="coffee">CoffeeScript</option>
+          <option value="gherkin">Gherkin</option>
+          <option value="python">Python</option>
+          <option value="ruby">Ruby</option>
+          <option value="perl">Perl</option>
+          <option value="php">PHP</option>
+          <option value="java">Java</option>
+          <option value="csharp">C#</option>
+          <option value="c_cpp">C++</option>
+          <option value="svg">SVG</option>
+          <option value="ocaml">OCaml</option>
+          <option value="textile">Textile</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td >
+        <label for="mode">Mode</label>
+      </td><td>
+        <select id="mode" size="1">
+          <option value="text">Plain Text</option>
+          <option value="javascript">JavaScript</option>
+          <option value="xml">XML</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="python">Python</option>
+          <option value="php">PHP</option>
+          <option value="java">Java</option>
+          <option value="ruby">Ruby</option>
+          <option value="c_cpp">C/C++</option>
+          <option value="coffee">CoffeeScript</option>
+          <option value="gherkin">Gherkin</option>
+          <option value="perl">Perl</option>
+          <option value="ocaml">OCaml</option>
+          <option value="csharp">C-Sharp</option>
+          <option value="svg">SVG</option>
+          <option value="textile">Textile</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td >
+        <label for="theme">Theme</label>
+      </td><td>
         <select id="theme" size="1">
           <option value="ace/theme/textmate">TextMate</option>
           <option value="ace/theme/eclipse">Eclipse</option>
@@ -54,8 +95,11 @@
           <option value="ace/theme/solarized_light">Solarized Light</option>
         </select>
       </td>
-      <td align="right">
-        <label for="fontsize">Font Size:</label>
+    </tr>
+    <tr>
+      <td >
+        <label for="fontsize">Font Size</label>
+      </td><td>
         <select id="fontsize" size="1">
           <option value="10px">10px</option>
           <option value="11px">11px</option>
@@ -66,51 +110,39 @@
           <option value="24px">24px</option>
         </select>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="select_style">Full Line Selection</label>
+      </td><td>
         <input type="checkbox" name="select_style" id="select_style" checked>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="highlight_active">Highlight Active Line</label>
+      </td><td>
         <input type="checkbox" name="highlight_active" id="highlight_active" checked>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="show_hidden">Show Invisibles</label>
+      </td><td>
         <input type="checkbox" name="show_hidden" id="show_hidden" checked>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="show_hscroll">Persistent HScroll</label>
+      </td><td>
         <input type="checkbox" name="show_hscroll" id="show_hscroll">
       </td>
-      <td align="right" rowspan="2">
-        <img src="demo/logo.png">
-      </td>
-      </tr>
-      <tr>
-      <td align="right">
-        <label for="mode">Mode:</label>
-        <select id="mode" size="1">
-          <option value="text">Plain Text</option>
-          <option value="javascript">JavaScript</option>
-          <option value="xml">XML</option>
-          <option value="html">HTML</option>
-          <option value="css">CSS</option>
-          <option value="python">Python</option>
-          <option value="php">PHP</option>
-          <option value="java">Java</option>
-          <option value="ruby">Ruby</option>
-          <option value="c_cpp">C/C++</option>
-          <option value="coffee">CoffeeScript</option>
-          <option value="perl">Perl</option>
-          <option value="ocaml">OCaml</option>
-          <option value="csharp">C-Sharp</option>
-          <option value="svg">SVG</option>
-          <option value="textile">Textile</option>
-          <option value="gherkin">Gherkin</option>
-        </select>
-      </td>
-      <td align="right">
-        <label for="keybinding">Key Binding:</label>
+    </tr>
+    <tr>
+      <td >
+        <label for="keybinding">Key Binding</label>
+      </td><td>
         <select id="keybinding" size="1">
           <option value="ace">Ace</option>
           <option value="vim">Vim</option>
@@ -118,8 +150,11 @@
           <option value="custom">Custom</option>
         </select>
       </td>
-      <td align="right">
-        <label for="soft_wrap">Soft Wrap:</label>
+    </tr>
+    <tr>
+      <td >
+        <label for="soft_wrap">Soft Wrap</label>
+      </td><td>
         <select id="soft_wrap" size="1">
           <option value="off">Off</option>
           <option value="40">40 Chars</option>
@@ -127,20 +162,32 @@
           <option value="free">Free</option>
         </select>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="show_gutter">Show Gutter</label>
+      </td><td>
         <input type="checkbox" id="show_gutter" checked>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="show_print_margin">Show Print Margin</label>
+      </td><td>
         <input type="checkbox" id="show_print_margin" checked>
       </td>
-      <td align="right">
-        <label for="soft_tab">Use Soft Tab:</label>
+    </tr>
+    <tr>
+      <td >
+        <label for="soft_tab">Use Soft Tab</label>
+      </td><td>
         <input type="checkbox" id="soft_tab" checked>
       </td>
-      <td align="right">
+    </tr>
+    <tr>
+      <td >
         <label for="highlight_selected_word">Highlight selected word</label>
+      </td><td>
         <input type="checkbox" id="highlight_selected_word" checked>
       </td>
       </tr>
@@ -300,9 +347,27 @@ do ->
         heregex  # comment
     ///imgy
     this isnt: `just JavaScript`
-    undefined
+    undefined</script>
 
-var illegal</script>
+<script type="text/editor" id="gherkintext">Feature: Gherkin document
+
+  @fast @tasty
+  Scenario: Some cukes
+    Given I have 3 cukes in my belly
+    When I say:
+      """
+      I need more cukes
+      """
+
+  # This is a comment
+  Scenario Outline: Different numbers of cukes
+    Given I have <n> cukes in my belly
+
+    Examples: not so many
+      | n |
+      | 1 |
+      | 3 |
+</script>
 
 <script type="text/editor" id="perltext">
 #!/usr/bin/perl
@@ -473,25 +538,6 @@ p(one two three#my_id). ..classes + id
 bg. Blockquote!
     This is a two-list blockquote..!
 
-</script>
-<script type="text/editor" id="gherkintext">Feature: Gherkin document
-
-  @fast @tasty
-  Scenario: Some cukes
-    Given I have 3 cukes in my belly
-    When I say:
-      """
-      I need more cukes
-      """
-
-  # This is a comment
-  Scenario Outline: Different numbers of cukes
-    Given I have <n> cukes in my belly
-    
-    Examples: not so many
-      | n |
-      | 1 |
-      | 3 |
 </script>
 
   <input id="cockpitInput" type="text"/>
